@@ -28,11 +28,6 @@ mp_face_mesh = mp.solutions.face_mesh
 #Model for Face Mesh
 model_face_mesh = mp_face_mesh.FaceMesh()
 
-def get_image_download_link(img):
-    img = Image.fromarray(img)
-    img.save(f'img{random.randint(0,1000)}.png')
-    st.success("Downloaded Successfully!")
-
 st.title("Imageara")
 st.subheader("Edit Images with OpenCV!\n-Created By [Nikita Emberi](https://www.linkedin.com/in/nikitaemberi).")
 
@@ -54,10 +49,8 @@ elif add_selectbox == "Grayscale":
         image = np.array(Image.open(image_file_path))
         st.sidebar.image(image)
         gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        download=st.button('Download Image')
         st.image(gray_image)
-        if download:
-            get_image_download_link(gray_image)
+      
 
 
 elif add_selectbox == "BGR Image":
@@ -75,11 +68,8 @@ elif add_selectbox == "BGR Image":
             img = cv2.merge([zeros,g,zeros])
         elif choices == "Blue":
             img = cv2.merge([zeros, zeros, b])
-        download=st.button('Download Image')
         st.image(img)
-        if download:
-            get_image_download_link(img)
-
+     
 
 elif add_selectbox == "Meshing":
     image_file_path = st.sidebar.file_uploader("Upload image")
@@ -89,10 +79,7 @@ elif add_selectbox == "Meshing":
         results = model_face_mesh.process(image)
         for face_landmarks in results.multi_face_landmarks:
             mp_drawing.draw_landmarks(image, face_landmarks)
-        download=st.button('Download Image')
         st.image(image)
-        if download:
-            get_image_download_link(image)
 
 
 elif add_selectbox == "Face Recognition":
@@ -128,10 +115,7 @@ elif add_selectbox == "Face Recognition":
                     1,
                     (0, 255,0),
                     3)
-            download=st.button('Download Image')
             st.image(image_test)
-            if download:
-                get_image_download_link(image_test)
 
 
 elif add_selectbox == "Face Detection":
@@ -143,10 +127,7 @@ elif add_selectbox == "Face Detection":
 
         for face_landmarks in results.detections:
             mp_drawing.draw_detection(image, face_landmarks)
-        download=st.button('Download Image')
         st.image(image)
-        if download:
-            get_image_download_link(image)
 
 
 elif add_selectbox == "Selfie Segmentation":
@@ -178,9 +159,5 @@ elif add_selectbox == "Selfie Segmentation":
                 bg_image = cv2.resize(bg_image,(image.shape[1],image.shape[0]))
                 output_image = np.where(condition,image,bg_image)
         st.image(output_image)
-        download=st.button('Download Image')
-        if download:
-            get_image_download_link(output_image)
-
     
 
