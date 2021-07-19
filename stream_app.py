@@ -34,7 +34,7 @@ def get_image_download_link(img):
     st.success("Downloaded Successfully!")
 
 st.title("Imageara")
-st.subheader("Edit Images with OpenCV!\n-Created By Nikita Emberi")
+st.subheader("Edit Images with OpenCV!\n-Created By [Nikita Emberi](https://www.linkedin.com/in/nikitaemberi).")
 
 add_selectbox = st.sidebar.selectbox(
     "What operations you would like to perform?",
