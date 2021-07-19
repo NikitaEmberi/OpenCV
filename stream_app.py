@@ -144,20 +144,23 @@ elif add_selectbox == "Selfie Segmentation":
             bg_color = (41, 113, 227)
             bg_color_zeros[:] = bg_color
             output_image = np.where(condition,image,bg_color_zeros)
+            st.image(output_image)
         elif choices == "Gray":
             bg_color = (192, 192, 192)
             bg_color_zeros[:] = bg_color
             output_image = np.where(condition,image,bg_color_zeros)
+            st.image(output_image)
         elif choices == "White":
             bg_color = (233, 238, 247)
             bg_color_zeros[:] = bg_color
             output_image = np.where(condition,image,bg_color_zeros)
+            st.image(output_image)
         elif choices == "Upload Custom Background":
             bg_image_file_path = st.sidebar.file_uploader("Choose image",key="4")
             if bg_image_file_path is not None:
                 bg_image = np.array(Image.open(bg_image_file_path))
                 bg_image = cv2.resize(bg_image,(image.shape[1],image.shape[0]))
                 output_image = np.where(condition,image,bg_image)
-        st.image(output_image)
+                st.image(output_image)
     
 
