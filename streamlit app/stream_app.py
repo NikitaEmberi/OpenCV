@@ -4,7 +4,10 @@ import cv2
 import numpy as np
 from PIL import Image
 import mediapipe as mp
-import face_recognition
+try:
+    import face_recognition
+except:
+    st.write("No module for face_recognition do not try.")
 import random
 
 mp_drawing = mp.solutions.drawing_utils
