@@ -45,7 +45,8 @@ add_selectbox = st.sidebar.selectbox(
 if add_selectbox == "About":
     st.write('''This application allows user to perform basic OpenCV operations on images
             and see the corresponding results. This application operates on libraries
-            like mediapipe, dlib, face_recognition,cv2.''')
+            like mediapipe, dlib, face_recognition,cv2.
+            This application is created by [Nikita Emberi](https://www.linkedin.com/in/nikitaemberi), a sophomore at Vidyalankar Institute of Technology.''')
 
 elif add_selectbox == "Grayscale":
     image_file_path = st.sidebar.file_uploader("Upload image",key="gray")
